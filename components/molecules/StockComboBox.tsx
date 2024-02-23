@@ -11,9 +11,14 @@ type Stock = {
 type StockComboBoxProps = {
   label: string;
   stock: Stock[];
+  onChange: (e: any) => void;
 };
 
-const StockComboBox: React.FC<StockComboBoxProps> = ({ stock, label }) => {
+const StockComboBox: React.FC<StockComboBoxProps> = ({
+  stock,
+  label,
+  onChange,
+}) => {
   const [query, setQuery] = useState('');
   const [selectedstock, setSelectedstock] = useState(null);
 
@@ -24,8 +29,12 @@ const StockComboBox: React.FC<StockComboBoxProps> = ({ stock, label }) => {
           return stock.name.toLowerCase().includes(query.toLowerCase());
         });
 
+  const handleOnChange = (value: any) => {
+    onChange(value);
+    setSelectedstock(value);
+  };
   return (
-    <Combobox as="div" value={selectedstock} onChange={setSelectedstock}>
+    <Combobox as="div" value={selectedstock} onChange={handleOnChange}>
       <Combobox.Label className="block text-sm font-medium leading-6 text-gray-900">
         {label}
       </Combobox.Label>

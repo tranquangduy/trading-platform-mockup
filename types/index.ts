@@ -8,3 +8,9 @@ export type Stock = {
   amount: number;
   boughtPrice: number;
 };
+
+export type Market = {
+  name: string;
+  amount: string;
+  currentPrice: number;
+};
