@@ -7,12 +7,13 @@ export const useFetchUser = () => {
     availableAmount: 0,
     stocks: [],
   });
+  const fetchUser = async () => {
+    const res = await fetch('/api/user');
+    const data = await res.json();
+    setUser(data);
+  };
   useEffect(() => {
-    fetch('/api/user')
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-      });
+    fetchUser();
   }, []);
-  return { user };
+  return { user, fetchUser };
 };
