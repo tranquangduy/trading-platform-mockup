@@ -13,10 +13,11 @@ const TrendChart: React.FC<TrendChartProps> = ({ data }) => {
       autoDrawDuration={3000}
       autoDrawEasing="ease-out"
       data={data}
-      gradient={['purple', 'violet']}
+      gradient={['#5046e5']}
       radius={10}
-      strokeWidth={1}
+      strokeWidth={1.2}
       strokeLinecap={'butt'}
+      height={100}
     />
   );
 };

@@ -36,7 +36,9 @@ const StockInfo: React.FC<StockInfoProps> = ({ stock }) => {
           change={percentageChange ? `${percentageChange.toFixed(2)}%` : '-'}
         />
       </div>
-      {prevStockPrices && <TrendChart data={prevStockPrices || [1]} />}
+      <div className="w-[50%] pt-4 border-b">
+        {prevStockPrices && <TrendChart data={prevStockPrices || [1]} />}
+      </div>
     </div>
   );
 };
