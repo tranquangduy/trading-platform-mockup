@@ -1,7 +1,9 @@
 import StockComboBox from '@/components/molecules/StockComboBox';
+import PrivateLayout from '@/components/organisms/PrivateLayout';
 import React from 'react';
+import { NextPageWithLayout } from '../page';
 
-const BuyPage = () => {
+const BuyPage: NextPageWithLayout = () => {
   const stock = [
     { id: '1', name: 'Apple' },
     { id: '2', name: 'Banana' },
@@ -17,3 +19,7 @@ const BuyPage = () => {
 };
 
 export default BuyPage;
+
+BuyPage.getLayout = (page) => {
+  return <PrivateLayout heading="Buy">{page}</PrivateLayout>;
+};

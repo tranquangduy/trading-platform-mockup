@@ -1,8 +1,10 @@
 import DepotCard from '@/components/molecules/DepotCard';
 import TrendChart from '@/components/molecules/TrendChart';
 import React from 'react';
+import { NextPageWithLayout } from '../page';
+import Layout from '@/components/organisms/PrivateLayout';
 
-const OverviewPage = () => {
+const OverviewPage: NextPageWithLayout = () => {
   const mock = {
     name: 'Depot Value',
     stat: '€ 1.000.000',
@@ -25,3 +27,7 @@ const OverviewPage = () => {
 };
 
 export default OverviewPage;
+
+OverviewPage.getLayout = (page) => {
+  return <Layout heading="Overview">{page}</Layout>;
+};
