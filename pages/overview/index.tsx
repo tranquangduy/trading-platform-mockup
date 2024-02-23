@@ -3,24 +3,27 @@ import TrendChart from '@/components/molecules/TrendChart';
 import React from 'react';
 import { NextPageWithLayout } from '../page';
 import Layout from '@/components/organisms/PrivateLayout';
+import { useFetchUser } from '@/logic/useFetchUser';
+import { formatCurrency } from '@/logic/formatCurrency';
 
 const OverviewPage: NextPageWithLayout = () => {
-  const mock = {
-    name: 'Depot Value',
-    stat: '€ 1.000.000',
-    previousStat: '€ 900.000',
-    change: '€ 100.000',
-    changeType: 'increase',
-  };
+  const { user } = useFetchUser();
+
   return (
     <div>
       <DepotCard
-        name={mock.name}
-        stat={mock.stat}
-        previousStat={mock.previousStat}
-        change={mock.change}
-        changeType={mock.changeType}
+        name={'Your depot'}
+        stat={formatCurrency(user?.availableAmount)}
       />
+      {user?.stocks.map((stock) => (
+        <DepotCard
+          key={stock.name}
+          name={stock.name}
+          stat={formatCurrency(stock.value)}
+        />
+      ))}
+
+      <h2>Trend</h2>
       <TrendChart data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} />
     </div>
   );

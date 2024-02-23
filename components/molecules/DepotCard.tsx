@@ -5,9 +5,9 @@ import React from 'react';
 type DepotCardProps = {
   name: string;
   stat: string;
-  previousStat: string;
-  change: string;
-  changeType: string;
+  previousStat?: string;
+  change?: string;
+  changeType?: string;
 };
 
 const DepotCard: React.FC<DepotCardProps> = ({
@@ -25,36 +25,40 @@ const DepotCard: React.FC<DepotCardProps> = ({
           <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
             <div className="flex items-baseline text-2xl font-semibold text-indigo-600">
               {stat}
-              <span className="ml-2 text-sm font-medium text-gray-500">
-                from {previousStat}
-              </span>
+              {previousStat && (
+                <span className="ml-2 text-sm font-medium text-gray-500">
+                  from {previousStat}
+                </span>
+              )}
             </div>
 
-            <div
-              className={clsx(
-                changeType === 'increase'
-                  ? 'bg-green-100 text-green-800'
-                  : 'bg-red-100 text-red-800',
-                'inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium md:mt-2 lg:mt-0'
-              )}
-            >
-              {changeType === 'increase' ? (
-                <ArrowUpIcon
-                  className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500"
-                  aria-hidden="true"
-                />
-              ) : (
-                <ArrowDownIcon
-                  className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-red-500"
-                  aria-hidden="true"
-                />
-              )}
+            {changeType && (
+              <div
+                className={clsx(
+                  changeType === 'increase'
+                    ? 'bg-green-100 text-green-800'
+                    : 'bg-red-100 text-red-800',
+                  'inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium md:mt-2 lg:mt-0'
+                )}
+              >
+                {changeType === 'increase' ? (
+                  <ArrowUpIcon
+                    className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <ArrowDownIcon
+                    className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-red-500"
+                    aria-hidden="true"
+                  />
+                )}
 
-              <span className="sr-only">
-                {changeType === 'increase' ? 'Increased' : 'Decreased'} by{' '}
-              </span>
-              {change}
-            </div>
+                <span className="sr-only">
+                  {changeType === 'increase' ? 'Increased' : 'Decreased'} by{' '}
+                </span>
+                {change}
+              </div>
+            )}
           </dd>
         </div>
       </dl>
