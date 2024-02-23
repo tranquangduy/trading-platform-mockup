@@ -1,10 +1,12 @@
 import DepotCard from '@/components/molecules/DepotCard';
 import TrendChart from '@/components/molecules/TrendChart';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NextPageWithLayout } from '../page';
 import Layout from '@/components/organisms/PrivateLayout';
 import { useFetchUser } from '@/logic/useFetchUser';
 import { formatCurrency } from '@/logic/formatCurrency';
+import { generateStockPrice } from '@/logic/generateStockPrice';
+import StockInfo from '@/components/molecules/StockInfo';
 
 const OverviewPage: NextPageWithLayout = () => {
   const { user } = useFetchUser();
@@ -16,11 +18,7 @@ const OverviewPage: NextPageWithLayout = () => {
         stat={formatCurrency(user?.availableAmount)}
       />
       {user?.stocks.map((stock) => (
-        <DepotCard
-          key={stock.name}
-          name={stock.name}
-          stat={formatCurrency(stock.value)}
-        />
+        <StockInfo key={stock.name} stock={stock} />
       ))}
 
       <h2>Trend</h2>

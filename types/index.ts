@@ -6,5 +6,5 @@ export type User = {
 export type Stock = {
   name: string;
   amount: number;
-  value: number;
+  boughtPrice: number;
 };

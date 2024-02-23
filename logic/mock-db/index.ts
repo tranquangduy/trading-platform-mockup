@@ -7,12 +7,12 @@ export let user: User = {
     {
       name: 'Apple',
       amount: 10,
-      value: 100,
+      boughtPrice: 100,
     },
     {
       name: 'Tesla',
       amount: 5,
-      value: 500,
+      boughtPrice: 500,
     },
   ],
 };
