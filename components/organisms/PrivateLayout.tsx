@@ -1,4 +1,7 @@
 import LayoutMenu from './LayoutMenu';
+import { useAuthenticate } from '@/logic/useAuthenticate';
+import Button from '../atoms/Button';
+import { useRouter } from 'next/router';
 
 type PrivateLayoutProps = {
   heading?: string;
@@ -6,6 +9,19 @@ type PrivateLayoutProps = {
 };
 
 const PrivateLayout: React.FC<PrivateLayoutProps> = ({ heading, children }) => {
+  const { isAuthenticated } = useAuthenticate();
+  const router = useRouter();
+  if (!isAuthenticated) {
+    return (
+      <div className="w-full flex justify-center">
+        <div className="w-[50%] flex flex-col items-center p-4 gap-y-4">
+          you are not login in
+          <Button onClick={() => router.push('/')}>Back to Login</Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="min-h-full">
