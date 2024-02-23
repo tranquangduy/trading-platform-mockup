@@ -16,3 +16,5 @@ export let user: User = {
     },
   ],
 };
+
+export let prevStockPrices = [20, 11, 12, 46, 55, 33, 22, 78, 96, 12, 36];

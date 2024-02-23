@@ -1,11 +1,9 @@
 import DepotCard from '@/components/molecules/DepotCard';
-import TrendChart from '@/components/molecules/TrendChart';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NextPageWithLayout } from '../page';
 import Layout from '@/components/organisms/PrivateLayout';
 import { useFetchUser } from '@/logic/useFetchUser';
 import { formatCurrency } from '@/logic/formatCurrency';
-import { generateStockPrice } from '@/logic/generateStockPrice';
 import StockInfo from '@/components/molecules/StockInfo';
 
 const OverviewPage: NextPageWithLayout = () => {

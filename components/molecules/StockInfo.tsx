@@ -37,7 +37,9 @@ const StockInfo: React.FC<StockInfoProps> = ({ stock }) => {
         />
       </div>
       <div className="w-[50%] pt-4 border-b">
-        {prevStockPrices && <TrendChart data={prevStockPrices || [1]} />}
+        {prevStockPrices && prevStockPrices !== null && (
+          <TrendChart data={prevStockPrices || [1]} />
+        )}
       </div>
     </div>
   );
